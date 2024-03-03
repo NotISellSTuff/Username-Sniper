@@ -27,7 +27,7 @@ def main():
      | |  | / __|/ _ \ '__|  \___ \| '_ \| | '_ \ / _ \ '__|
      | |__| \__ \  __/ |     ____) | | | | | |_) |  __/ |   
       \____/|___/\___|_|    |_____/|_| |_|_| .__/ \___|_|   
-                                         | |   Version 1.0             
+                                         | |   Version 1.1             
                                          |_|              
         Made By ISellStuff
         5.Exit
@@ -63,7 +63,7 @@ def main():
             else:
                 print(Fore.RED + "[!] Error")
             print()
-            input("Press Enter To Close... ")
+        input("Press Enter To Close... ")
 
     if op == '2':
         fn = input(cyan + "How Much Usernames Do You Want To Snipe? " )
