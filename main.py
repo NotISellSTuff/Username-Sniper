@@ -1,5 +1,6 @@
+import os
 try:
-    import requests, colorama, time, os, random, string
+    import requests, colorama, time, random, string
     from string import ascii_lowercase, digits
     from colorama import Fore, Back, Style
 except ModuleNotFoundError:
@@ -27,13 +28,14 @@ def main():
      | |  | / __|/ _ \ '__|  \___ \| '_ \| | '_ \ / _ \ '__|
      | |__| \__ \  __/ |     ____) | | | | | |_) |  __/ |   
       \____/|___/\___|_|    |_____/|_| |_|_| .__/ \___|_|   
-                                         | |   Version 1.1             
+                                         | |   Version 1.3             
                                          |_|              
         Made By ISellStuff
-        5.Exit
+        9.Exit
           
         1.Roblox
-        2.Fortnite                                                   
+        2.Fortnite (Patched)
+        3.Recroom                                                  
                                             """)
     
     op = input(cyan + "[>] ")
@@ -47,7 +49,6 @@ def main():
         roblox = input(cyan + "How Much Username Do You Want To Snipe? ")
 
         for i in range(int(roblox)):
-            session = requests.Session()
             letters: str = digits + ascii_lowercase 
             username: str = "".join(random.choices(letters, k=5))
             find = requests.get(f"https://auth.roblox.com/v1/usernames/validate?birthday=1992-12-31T23:00:00.000Z&context=Signup&username={username}")
@@ -66,29 +67,28 @@ def main():
         input("Press Enter To Close... ")
 
     if op == '2':
-        fn = input(cyan + "How Much Usernames Do You Want To Snipe? " )
+        print(Fore.YELLOW + "[!] Fortnite Username Patched Fixing Soon")
+        time.sleep(1.5)
+        quit()
 
-        for i in range(int(fn)):
+
+    if op == '3':
+        rec = input(Fore.CYAN + "\n[+] Ammount Of Usernames To Find: ")
+
+        for i in range(int(rec)):
             letters: str = digits + ascii_lowercase 
-            fnuser: str = "".join(random.choices(letters, k=5))
+            username2: str = "".join(random.choices(letters, k=4))
 
-            findf = requests.get(f"https://fortnitetracker.com/profile/search?q={fnuser}")
-            if findf.status_code == 404:
-                print(Fore.GREEN + f"[+] {fnuser} is Available")
-                fnu = open('usernames.txt','a')
-                fnu.write(f"[+] Valid FN User {username}\n")
+            r = requests.post(f"https://apim.rec.net/accounts/account?username={username2}", data={f'username={username2}'})
+            if r.status_code == 404:
+                recr = open('usernames.txt','a')
+                recr.write(f"[+] Valid Recroom User: {username2}\n")
+                print(Fore.GREEN + f"\n[+] Valid {username2}")
+                print()
             else:
-                print(Fore.RED + "[!] User Not Available")
-            print()
-
+                print(Fore.RED + "[!] Invalid User\n")
         input("Press Enter To Close... ")
-
-    if op == '9':
-        letters: str = digits + ascii_lowercase 
-        username: str = "".join(random.choices(letters, k=4))
-
-        r = requests.post(f'https://www.snapchat.com/add/{username}')
-        print(r.text)
+        
 
 
 main()
